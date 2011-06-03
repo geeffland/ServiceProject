@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+	<!--
+		$Id: profile.xml
+	-->
+<form>
+	<fieldset>
+		<field name="id"  type="text" label="COM_SERVICEPROJECT_FIELD_ID_LABEL"
+			description ="COM_SERVICEPROJECT_FIELD_ID_DESC" class="readonly" size="10" default="0" readonly="true" />
+			
+		<field name="user_id" type="usernames" label="COM_SERVICEPROJECT_FIELD_USERID_LABEL"
+			description="COM_SERVICEPROJECT_FIELD_USERID_DESC" class="inputbox" required="true" />
+
+		<field name="profile_id" type="profiles" label="COM_SERVICEPROJECT_FIELD_PROFILEID_LABEL"
+			description="COM_SERVICEPROJECT_FIELD_PROFILEID_DESC" class="inputbox" required="true" />
+
+		<field name="link_method" type="linkmethods" label="COM_SERVICEPROJECT_FIELD_LINKMETHOD_LABEL"
+			description="COM_SERVICEPROJECT_FIELD_LINKMETHOD_DESC" class="inputbox" />
+
+		<field name="canregister" type="canregister" label="COM_SERVICEPROJECT_FIELD_CANREGISTER_LABEL"
+			description="COM_SERVICEPROJECT_FIELD_CANREGISTER_DESC" class="inputbox" />
+
+		<field name="canmodify" type="canmodify" label="COM_SERVICEPROJECT_FIELD_CANMODIFY_LABEL"
+			description="COM_SERVICEPROJECT_FIELD_CANMODIFY_DESC" class="inputbox" />
+
+		<field name="canaccess" type="canaccess" label="COM_SERVICEPROJECT_FIELD_CANACCESS_LABEL"
+			description="COM_SERVICEPROJECT_FIELD_CANACCESS_DESC" class="inputbox" />
+
+		<field name="remotekey" type="text" label="COM_SERVICEPROJECT_FIELD_REMOTEKEY_LABEL"
+			description="COM_SERVICEPROJECT_FIELD_REMOTEKEY_DESC" class="inputbox" size="100"/>
+
+		<field name="updatereason_id" type="updatereasonprofile" label="COM_SERVICEPROJECT_FIELD_UPDATEREASON_LABEL" 
+			description="COM_SERVICEPROJECT_FIELD_UPDATEREASON_DESC2" class="inputbox" required="true" />
+
+		<field name="updatecomments" type="textarea" label="COM_SERVICEPROJECT_FIELD_UPDATECOMMENTS_LABEL"
+			description="COM_SERVICEPROJECT_FIELD_UPDATECOMMENTS_DESC" class="inputbox" rows="2" cols="50"/>
+
+		<field name="last_updated" type="text" label="COM_SERVICEPROJECT_FIELD_LASTUPDATED_LABEL"
+			description ="COM_SERVICEPROJECT_FIELD_LASTUPDATED_DESC" class="readonly" size="15" default="0" readonly="true" />
+
+		<field name="last_updated_by" type="usernames" label="COM_SERVICEPROJECT_FIELD_LASTUPDATEDBY_LABEL"
+			description ="COM_SERVICEPROJECT_FIELD_LASTUPDATEDBY_DESC" class="readonly" readonly="true" />
+
+		</fieldset>
+
+</form>

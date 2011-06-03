@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="component" version="1.6.0" method="upgrade">
+	<name>ServiceProject</name>
+	<creationDate>January 2011</creationDate>
+	<author>Greg Effland</author>
+	<authorEmail>greg@cbconnector.com</authorEmail>
+	<authorUrl>cbconnector.com</authorUrl>
+	<copyright>(C) 2010, 2011 Greg Effland. All rights reserved.	</copyright>
+	<license>GNU General Public License version 2 or later; see	LICENSE.txt</license>
+	<version>1.0.0</version>
+	<description>COM_SERVICEPROJECT_DESCRIPTION</description>
+<!-- New in 1.6
+	<scriptfile>file.script.php</scriptfile>
+-->
+
+	<install> <!-- Runs on install -->
+		<sql>
+			<file driver="mysql" charset="utf8">sql/uninstall.mysql.utf8.sql</file>
+			<file driver="mysql" charset="utf8">sql/install.mysql.utf8.sql</file>
+			<file driver="mysql" charset="utf8">sql/install-states.mysql.utf8.sql</file>
+		</sql>
+	</install>
+
+	<uninstall> <!-- Runs on uninstall -->
+		<sql>
+			<file driver="mysql" charset="utf8">sql/uninstall.mysql.utf8.sql</file>
+		</sql>
+	</uninstall>
+
+	<update> <!-- Runs on update -->
+		<sql>
+			<file driver="mysql" charset="utf8">sql/update.mysql.utf8.sql</file>
+		</sql>
+	</update>
+
+	<files folder="site">
+		<filename>serviceproject.php</filename>
+		<filename>controller.php</filename>
+		<filename>index.html</filename>
+		<filename>router.php</filename>
+		<folder>controllers</folder>
+		<folder>helpers</folder>
+		<folder>language</folder>
+		<folder>models</folder>
+		<folder>views</folder>
+	</files>
+<!--
+	<languages folder="admin">
+		<language tag="en-GB">language/en-GB/en-GB.com_serviceproject.sys.ini</language>
+	</languages>
+-->
+<!--
+	<media destination="com_serviceproject" folder="media">
+		<filename>com_beta.jpg</filename>
+	</media>
+-->
+	<administration>
+		<menu>COM_SERVICEPROJECT</menu>
+		<submenu>
+			<menu view="main">COM_SERVICEPROJECT_SUBMENU_MAIN</menu>
+			<menu view="eventgroups">COM_SERVICEPROJECT_MANAGE_EVENTGROUPS</menu>
+<!--			<menu view="eventgroupshifts">COM_SERVICEPROJECT_MANAGE_SHIFTS</menu>
+			<menu view="projects">COM_SERVICEPROJECT_MANAGE_PROJECTS</menu>
+			<menu view="registrations">COM_SERVICEPROJECT_MANAGE_REGISTRATIONS</menu>
+			<menu view="linkedprofiles">COM_SERVICEPROJECT_MANAGE_LINKEDPROFILES</menu> -->
+			<menu view="profiles">COM_SERVICEPROJECT_MANAGE_PROFILES</menu>
+			<menu view="addresses">COM_SERVICEPROJECT_MANAGE_ADDRESSES</menu>
+			<!-- Is there a way to put a separator here -->
+<!--			<menu view="updatereasons">COM_SERVICEPROJECT_MANAGE_UPDATEREASONS</menu>
+			<menu view="projectroles">COM_SERVICEPROJECT_MANAGE_PROJECTROLES</menu>
+			<menu view="regstatuses">COM_SERVICEPROJECT_MANAGE_REGSTATUSES</menu> -->
+			<menu view="reports">COM_SERVICEPROJECT_REPORTS</menu>
+			<menu view="configurations">COM_SERVICEPROJECT_CONFIGURATION</menu>
+			<!-- <menu task="duplicateEvent">Duplicate Event</menu> -->
+		</submenu>
+		
+		<files folder="admin">
+			<filename>access.xml</filename>
+			<filename>config.xml</filename>
+			<filename>controller.php</filename>
+			<filename>serviceproject.php</filename>
+			<filename>index.html</filename>
+			<folder>controllers</folder>
+			<folder>elements</folder>
+			<folder>helpers</folder>
+			<folder>language</folder>
+			<folder>models</folder>
+			<folder>sql</folder>
+			<folder>tables</folder>
+			<folder>views</folder>
+		</files>
+<!--
+		<languages>
+			<language tag="en-GB">language/en-GB/en-GB.com_serviceproject.sys.ini</language>
+			<language tag="en-GB">language/en-GB/en-GB.com_serviceproject.ini</language>
+			<language tag="en-GB">language/en-GB/en-GB.com_serviceproject.menu.ini</language>
+		</languages>
+-->
+	</administration>
+
+	<!-- Extension Update Specification -->
+	<updateservers>
+		<server type="extension" priority="1" name="Extension Update Site">http://cbconnector.com/update/component/com_serviceproject/extension.xml</server> <!-- useful for single extensions -->
+		<server type="collection" priority="2" name="Collection Update Site">http://cbconnector.com/update/serviceproject/update.xml</server><!-- useful for collections of extensions -->
+	</updateservers>
+
+	<!-- Tables -->
+	<!-- These are used for backups to determine which tables to backup; ones marked optional are only backed up if they exist -->
+<!--	<tables>
+		<table>#__beta_install</table>
+		<table type="optional">#__beta_update</table>
+	</tables>
+-->
+	<!--  Dependencies -->
+	<dependencies>
+		<dependency type="platform" name="joomla" operator="=" version="1.6" />
+	</dependencies>
+</extension>

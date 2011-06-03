@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+	<!--
+		$Id: configuration.xml
+	-->
+<form>
+	<fieldset>
+		<field name="id"  type="text" class="readonly" label="COM_SERVICEPROJECT_FIELD_ID_LABEL"
+			description ="COM_SERVICEPROJECT_FIELD_ID_DESC" size="10" default="0" readonly="true" />
+			
+		<field name="config_name" type="text" label="COM_SERVICEPROJECT_FIELD_CONFIG_NAME_LABEL"
+			description="COM_SERVICEPROJECT_FIELD_CONFIG_NAME_DESC" class="inputbox" size="100" required="true" />
+
+		<field name="config_subname" type="text" label="COM_SERVICEPROJECT_FIELD_CONFIG_SUBNAME_LABEL"
+			description="COM_SERVICEPROJECT_FIELD_CONFIG_SUBNAME_DESC" class="inputbox" size="100" />
+
+		<field name="config_value" type="text" label="COM_SERVICEPROJECT_FIELD_CONFIG_VALUE_LABEL"
+			description="COM_SERVICEPROJECT_FIELD_CONFIG_VALUE_DESC" class="inputbox" size="45" required="true" />
+
+			
+	</fieldset>
+
+</form>

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+	<!--
+		$Id: eventgroupshift.xml
+	-->
+<form>
+	<fieldset>
+		<field name="id"  type="text" class="readonly" label="COM_SERVICEPROJECT_FIELD_ID_LABEL"
+			description ="COM_SERVICEPROJECT_FIELD_ID_DESC" size="10" default="0" readonly="true" />
+			
+		<field name="shift_id" type="text" label="COM_SERVICEPROJECT_FIELD_EVENTSHIFTID_LABEL"
+			description="COM_SERVICEPROJECT_FIELD_EVENTSHIFTID_DESC" class="inputbox" size="45" readonly="true" />
+
+		<field name="eventgroup_id" type="eventgroupid" label="COM_SERVICEPROJECT_FIELD_EVENTGROUPID_LABEL"
+			description="COM_SERVICEPROJECT_FIELD_EVENTGROUPID_DESC" class="inputbox" required="true" />
+
+		<field name="title" type="text" label="COM_SERVICEPROJECT_FIELD_EVENTSHIFT_TITLE_LABEL"
+			description="COM_SERVICEPROJECT_FIELD_EVENTSHIFT_TITLE_DESC" class="inputbox" size="80" 
+			required="true" />
+
+		<field name="startdate" type="calendar"
+			label="COM_SERVICEPROJECT_FIELD_EVENTSHIFT_STARTDATE_LABEL" description="COM_SERVICEPROJECT_FIELD_EVENTSHIFT_STARTDATE_DESC"
+			class="inputbox" format="%Y-%m-%d" size="22"
+			filter="user_utc" />
+
+		<field name="enddate" type="calendar"
+			label="COM_SERVICEPROJECT_FIELD_EVENTSHIFT_ENDDATE_LABEL" description="COM_SERVICEPROJECT_FIELD_EVENTSHIFT_ENDDATE_DESC"
+			class="inputbox" format="%Y-%m-%d" size="22"
+			filter="user_utc" />
+
+		<field name="updatereason_id" type="updatereasoneventgroupshift" label="COM_SERVICEPROJECT_FIELD_UPDATEREASON_LABEL" 
+			description="COM_SERVICEPROJECT_FIELD_UPDATEREASON_DESC2" class="inputbox" required="true" />
+
+		<field name="updatecomments" type="textarea" label="COM_SERVICEPROJECT_FIELD_UPDATECOMMENTS_LABEL"
+			description="COM_SERVICEPROJECT_FIELD_UPDATECOMMENTS_DESC" class="inputbox" rows="2" cols="50"/>
+
+		<field name="published" type="list" label="COM_SERVICEPROJECT_PUBLISHED_STATE"
+			description="JFIELD_PUBLISHED_DESC" class="inputbox"
+			filter="intval" size="1" default="1">
+			<option value="1">
+				JPUBLISHED</option>
+			<option value="0">
+				JUNPUBLISHED</option>
+			<option value="2">
+				JARCHIVED</option>
+			<option value="-2">
+				JTRASHED</option>
+		</field>
+
+		<field name="ordering" type="ordering" class="inputbox"
+			label="JFIELD_ORDERING_LABEL" description="JFIELD_ORDERING_DESC" />
+			
+		<field name="last_updated" type="text" label="COM_SERVICEPROJECT_FIELD_LASTUPDATED_LABEL"
+			description ="COM_SERVICEPROJECT_FIELD_LASTUPDATED_DESC" class="readonly" size="15" default="0" readonly="true" />
+
+		<field name="last_updated_by" type="usernames" label="COM_SERVICEPROJECT_FIELD_LASTUPDATEDBY_LABEL"
+			description ="COM_SERVICEPROJECT_FIELD_LASTUPDATEDBY_DESC" class="readonly" readonly="true" />
+
+	</fieldset>
+
+</form>

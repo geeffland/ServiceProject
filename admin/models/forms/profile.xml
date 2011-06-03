@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+	<!--
+		$Id: profile.xml
+	-->
+<form>
+	<fieldset>
+		<field name="id"  type="text" class="readonly" label="COM_SERVICEPROJECT_FIELD_ID_LABEL"
+			description ="COM_SERVICEPROJECT_FIELD_ID_DESC" size="10" default="0" readonly="true" />
+			
+		<field name="profile_id" type="text" label="COM_SERVICEPROJECT_FIELD_PROFILEID_LABEL"
+			description="COM_SERVICEPROJECT_FIELD_PROFILEID_DESC" class="readonly" size="10" readonly="true" />
+
+		<field name="firstname" type="text" label="COM_SERVICEPROJECT_FIELD_FIRSTNAME_LABEL"
+			description="COM_SERVICEPROJECT_FIELD_FIRSTNAME_DESC" class="inputbox" size="100"
+			required="true" />
+
+		<field name="nickname" type="text" label="COM_SERVICEPROJECT_FIELD_NICKNAME_LABEL"
+			description="COM_SERVICEPROJECT_FIELD_NICKNAME_DESC" class="inputbox" size="100"/>
+
+		<field name="middlename" type="text" label="COM_SERVICEPROJECT_FIELD_MIDDLENAME_LABEL"
+			description="COM_SERVICEPROJECT_FIELD_MIDDLENAME_DESC" class="inputbox" size="100"/>
+
+		<field name="lastname" type="text" label="COM_SERVICEPROJECT_FIELD_LASTNAME_LABEL"
+			description="COM_SERVICEPROJECT_FIELD_LASTNAME_DESC" class="inputbox" size="100"
+			required="true" />
+
+		<field name="suffix" type="text" label="COM_SERVICEPROJECT_FIELD_SUFFIX_LABEL"
+			description="COM_SERVICEPROJECT_FIELD_SUFFIX_DESC" class="inputbox" size="100"/>
+
+		<field name="address_id" type="text" label="COM_SERVICEPROJECT_FIELD_ADDRESS_LABEL"
+			description="COM_SERVICEPROJECT_FIELD_ADDRESS_DESC" class="readonly" size="10" readonly="true" />
+
+		<field name="emailhome" type="text" label="COM_SERVICEPROJECT_FIELD_EMAILHOME_LABEL"
+			description="COM_SERVICEPROJECT_FIELD_EMAILHOME_DESC" class="inputbox" size="100"/>
+
+		<field name="emailwork" type="text" label="COM_SERVICEPROJECT_FIELD_EMAILWORK_LABEL"
+			description="COM_SERVICEPROJECT_FIELD_EMAILWORK_DESC" class="inputbox" size="100"/>
+
+		<field name="emailother" type="text" label="COM_SERVICEPROJECT_FIELD_EMAILOTHER_LABEL"
+			description="COM_SERVICEPROJECT_FIELD_EMAILOTHER_DESC" class="inputbox" size="100"/>
+
+		<field name="emailpreferred" type="list" label="COM_SERVICEPROJECT_FIELD_EMAILPREFERRED_LABEL" 
+			description="COM_SERVICEPROJECT_FIELD_EMAILPREFERRED_DESC" class="inputbox"
+			filter="intval" size="1" default="1">
+			<option value="0">
+				COM_SERVICEPROJECT_FIELD_EMAILPREFERRED_NOTSET</option>
+			<option value="1">
+				COM_SERVICEPROJECT_FIELD_EMAILPREFERRED_HOME</option>
+			<option value="2">
+				COM_SERVICEPROJECT_FIELD_EMAILPREFERRED_WORK</option>
+			<option value="3">
+				COM_SERVICEPROJECT_FIELD_EMAILPREFERRED_OTHER</option>
+		</field>
+
+		<field name="phonehome" type="text" label="COM_SERVICEPROJECT_FIELD_PHONEHOME_LABEL"
+			description="COM_SERVICEPROJECT_FIELD_PHONEHOME_DESC" class="inputbox" size="100"/>
+
+		<field name="phonework" type="text" label="COM_SERVICEPROJECT_FIELD_PHONEWORK_LABEL"
+			description="COM_SERVICEPROJECT_FIELD_PHONEWORK_DESC" class="inputbox" size="100"/>
+
+		<field name="phonecell" type="text" label="COM_SERVICEPROJECT_FIELD_PHONECELL_LABEL"
+			description="COM_SERVICEPROJECT_FIELD_PHONECELL_DESC" class="inputbox" size="100"/>
+
+		<field name="phonepreferred" type="list" label="COM_SERVICEPROJECT_FIELD_PHONEPREFERRED_LABEL" 
+			description="COM_SERVICEPROJECT_FIELD_PHONEPREFERRED_DESC" class="inputbox"
+			filter="intval" size="1" default="1">
+			<option value="0">
+				COM_SERVICEPROJECT_FIELD_PHONEPREFERRED_NOTSET</option>
+			<option value="1">
+				COM_SERVICEPROJECT_FIELD_PHONEPREFERRED_HOME</option>
+			<option value="2">
+				COM_SERVICEPROJECT_FIELD_PHONEPREFERRED_WORK</option>
+			<option value="3">
+				COM_SERVICEPROJECT_FIELD_PHONEPREFERRED_CELL</option>
+		</field>
+
+		<field name="published" type="list" label="COM_SERVICEPROJECT_PUBLISHED_STATE"
+			description="JFIELD_PUBLISHED_DESC" class="inputbox"
+			filter="intval" size="1" default="1">
+			<option value="1">
+				JPUBLISHED</option>
+			<option value="0">
+				JUNPUBLISHED</option>
+			<option value="2">
+				JARCHIVED</option>
+			<option value="-2">
+				JTRASHED</option>
+		</field>
+
+		<field name="updatereason_id" type="updatereasonprofile" label="COM_SERVICEPROJECT_FIELD_UPDATEREASON_LABEL" 
+			description="COM_SERVICEPROJECT_FIELD_UPDATEREASON_DESC2" class="inputbox" required="true" />
+
+		<field name="updatecomments" type="textarea" label="COM_SERVICEPROJECT_FIELD_UPDATECOMMENTS_LABEL"
+			description="COM_SERVICEPROJECT_FIELD_UPDATECOMMENTS_DESC" class="inputbox" rows="2" cols="50"/>
+
+		<field name="last_updated" type="text" label="COM_SERVICEPROJECT_FIELD_LASTUPDATED_LABEL"
+			description ="COM_SERVICEPROJECT_FIELD_LASTUPDATED_DESC" class="readonly" size="15" default="0" readonly="true" />
+
+		<field name="last_updated_by" type="usernames" label="COM_SERVICEPROJECT_FIELD_LASTUPDATEDBY_LABEL"
+			description ="COM_SERVICEPROJECT_FIELD_LASTUPDATEDBY_DESC" class="readonly" readonly="true" />
+
+	</fieldset>
+
+</form>
