@@ -12,7 +12,7 @@
 // no direct access
 defined( '_JEXEC' ) or die( 'Restricted access' );
 
-// Access check.
+// Access check.  Check for "Access Component" Privelleges
 if (!JFactory::getUser()->authorise('core.manage', 'com_serviceproject')) {
 	return JError::raiseWarning(404, JText::_('COM_SERVICEPROJECT_ADMIN_NOMANAGE'));
 }
