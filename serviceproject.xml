@@ -16,7 +16,9 @@
 	<install> <!-- Runs on install -->
 		<sql>
 			<file driver="mysql" charset="utf8">sql/uninstall.mysql.utf8.sql</file>
-			<file driver="mysql" charset="utf8">sql/install.mysql.utf8.sql</file>
+			<file driver="mysql" charset="utf8">sql/install.tables.mysql.utf8.sql</file>
+			<file driver="mysql" charset="utf8">sql/install.defaults.mysql.utf8.sql</file>
+			<file driver="mysql" charset="utf8">sql/install.testdata.mysql.utf8.sql</file>
 			<file driver="mysql" charset="utf8">sql/install-states.mysql.utf8.sql</file>
 		</sql>
 	</install>
