@@ -9,7 +9,7 @@ DROP TABLE IF EXISTS `#__serviceproject_projects`;
 DROP TABLE IF EXISTS `#__serviceproject_project_ageranges`;
 DROP TABLE IF EXISTS `#__serviceproject_project_categories`;
 DROP TABLE IF EXISTS `#__serviceproject_project_skills`;
-DROP TABLE IF EXISTS `#__serviceproject_shifts`;
+DROP TABLE IF EXISTS `#__serviceproject_project_shifts`;
 DROP TABLE IF EXISTS `#__serviceproject_eventgroups`;
 DROP TABLE IF EXISTS `#__serviceproject_eventgroupshifts`;
 DROP TABLE IF EXISTS `#__serviceproject_profiles`;					-- implemented
@@ -24,7 +24,7 @@ DROP TABLE IF EXISTS `#__serviceproject_subscriptions`;
 -- Drop existing archive tables for com_serviceproject
 DROP TABLE IF EXISTS `#__serviceproject_archive_proposed_projects`;
 DROP TABLE IF EXISTS `#__serviceproject_archive_projects`;
-DROP TABLE IF EXISTS `#__serviceproject_archive_shifts`;
+DROP TABLE IF EXISTS `#__serviceproject_archive_project_shifts`;
 DROP TABLE IF EXISTS `#__serviceproject_archive_eventgroups`;
 DROP TABLE IF EXISTS `#__serviceproject_archive_eventgroupshifts`;
 DROP TABLE IF EXISTS `#__serviceproject_archive_profiles`;			-- implemented
