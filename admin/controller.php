@@ -55,4 +55,129 @@ class ServiceProjectController extends JController
 
 		return $this;
 	}
+	
+	/**
+	 * Proxy for getModel.
+	 *
+	 * @since	1.6
+	 */
+	public function getProjectRoleModel($name = 'ProjectRole', $prefix = 'ServiceProjectModel', $config = array('ignore_request' => true))
+	{
+		return parent::getModel($name, $prefix, $config);
+	}
+
+	public function toggleCanModifyProject()
+	{
+		// Check for request forgeries. // Disable for now because I don't know how to pass a token thru an Ajax call.
+		JRequest::checkToken() or jexit(JText::_('JINVALID_TOKEN'));
+		$messages = array();
+		$html = array();
+
+		require_once JPATH_COMPONENT.'/helpers/serviceproject.php';
+		require_once JPATH_COMPONENT.'/models/projectrole.php';
+		// Initialise variables.
+		$ids	= JRequest::getVar('cid', array(), '', 'array');
+		$prefix	= JRequest::getVar('prefix', '');
+		$jsTask	= JRequest::getVar('jstask', '');
+		
+		if (empty($ids)) {
+			$messages[] = JText::_('COM_SERVICEPROJECT_ROLES_NO_ITEM_SELECTED');
+		} else {
+			// Get the model.
+			$model = $this->getProjectRoleModel();
+
+			//cycle thru ids one at a time so html and messages can be collected
+			foreach ($ids as $id) {
+				// Change the state of the records.
+				if (!$model->toggleCanModifyProject($ids, $prefix, $retValue)) {
+					$messages[] = $model->getError();
+				} else {
+					$htmlcode = ServiceProjectHelper::showTrueFalseLink($retValue, $jsTask, $prefix, $id);
+					$html[] = array('id'=>$prefix.$id, 'html'=>$htmlcode);
+				}
+			}
+		}
+		
+		$ReturnResults = array('messages' => $messages, 'htmlcode' => $html);
+		$JSONResults = json_encode($ReturnResults);
+		echo $JSONResults;
+		return true;
+	}
+
+	public function toggleCanModifyVolunteers()
+	{
+		// Check for request forgeries. // Disable for now because I don't know how to pass a token thru an Ajax call.
+		JRequest::checkToken() or jexit(JText::_('JINVALID_TOKEN'));
+		$messages = array();
+		$html = array();
+
+		require_once JPATH_COMPONENT.'/helpers/serviceproject.php';
+		require_once JPATH_COMPONENT.'/models/projectrole.php';
+		// Initialise variables.
+		$ids	= JRequest::getVar('cid', array(), '', 'array');
+		$prefix	= JRequest::getVar('prefix', '');
+		$jsTask	= JRequest::getVar('jstask', '');
+		
+		if (empty($ids)) {
+			$messages[] = JText::_('COM_SERVICEPROJECT_ROLES_NO_ITEM_SELECTED');
+		} else {
+			// Get the model.
+			$model = $this->getProjectRoleModel();
+
+			//cycle thru ids one at a time so html and messages can be collected
+			foreach ($ids as $id) {
+				// Change the state of the records.
+				if (!$model->toggleCanModifyVolunteers($ids, $prefix, $retValue)) {
+					$messages[] = $model->getError();
+				} else {
+					$htmlcode = ServiceProjectHelper::showTrueFalseLink($retValue, $jsTask, $prefix, $id);
+					$html[] = array('id'=>$prefix.$id, 'html'=>$htmlcode);
+				}
+			}
+		}
+		
+		$ReturnResults = array('messages' => $messages, 'htmlcode' => $html);
+		$JSONResults = json_encode($ReturnResults);
+		echo $JSONResults;
+		return true;
+	}
+
+	public function toggleCanViewContactInfo()
+	{
+		// Check for request forgeries. // Disable for now because I don't know how to pass a token thru an Ajax call.
+		JRequest::checkToken() or jexit(JText::_('JINVALID_TOKEN'));
+		$messages = array();
+		$html = array();
+
+		require_once JPATH_COMPONENT.'/helpers/serviceproject.php';
+		require_once JPATH_COMPONENT.'/models/projectrole.php';
+		// Initialise variables.
+		$ids	= JRequest::getVar('cid', array(), '', 'array');
+		$prefix	= JRequest::getVar('prefix', '');
+		$jsTask	= JRequest::getVar('jstask', '');
+		
+		if (empty($ids)) {
+			$messages[] = JText::_('COM_SERVICEPROJECT_ROLES_NO_ITEM_SELECTED');
+		} else {
+			// Get the model.
+			$model = $this->getProjectRoleModel();
+
+			//cycle thru ids one at a time so html and messages can be collected
+			foreach ($ids as $id) {
+				// Change the state of the records.
+				if (!$model->toggleCanViewContactInfo($ids, $prefix, $retValue)) {
+					$messages[] = $model->getError();
+				} else {
+					$htmlcode = ServiceProjectHelper::showTrueFalseLink($retValue, $jsTask, $prefix, $id, 'COM_SERVICEPROJECT_CANVIEW', 'COM_SERVICEPROJECT_CANNOTVIEW');
+					$html[] = array('id'=>$prefix.$id, 'html'=>$htmlcode);
+				}
+			}
+		}
+		
+		$ReturnResults = array('messages' => $messages, 'htmlcode' => $html);
+		$JSONResults = json_encode($ReturnResults);
+		echo $JSONResults;
+		return true;
+	}
+
 }
