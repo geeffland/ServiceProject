@@ -1145,6 +1145,17 @@ echo '<hr>';
 <?php		}
 	}
 
+	public function showTrueFalseLink($checkValue, $ajaxTask='', $prefix='', $id=-1, $trueValue='COM_SERVICEPROJECT_CANMODIFY', $falseValue='COM_SERVICEPROJECT_CANNOTMODIFY')
+	{
+		//csp_getJSONResponse(varTask, varParams, varData)
+		if ($checkValue==1) { 
+			$result="<a id='".JText::_($prefix.$id)."' onClick='".JText::_($ajaxTask)."(".JText::_($id).")' class='jgrid' style='cursor:pointer' title='".JText::_($trueValue)."'><span class='state publish'><span class='text'>Published</span></span></a>";
+		} else { 
+			$result="<a id='".JText::_($prefix.$id)."' onClick='".JText::_($ajaxTask)."(".JText::_($id).")' class='jgrid' style='cursor:pointer' title='".JText::_($falseValue)."'><span class='state unpublish'><span class='text'>Unpublished</span></span></a>";
+		}
+		return $result;
+	}
+
 	public function showAskAllowDeny($checkValue, $trueValue='COM_SERVICEPROJECT_CANMODIFY', $falseValue='COM_SERVICEPROJECT_CANNOTMODIFY', $askValue='COM_SERVICEPROJECT_ASKPROFILE')
 	{
 		if ($checkValue==0) { ?>
