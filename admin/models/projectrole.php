@@ -126,4 +126,177 @@ class ServiceProjectModelProjectRole extends JModelAdmin
 		return $condition;
 	}
 
+	/**
+	 * Method to toggle CanModifyProject values for Project Roles.
+	 *
+	 * @param	array	$pks	The ids of the items to activate.
+	 *
+	 * @return	boolean	True on success.
+	 * @since	1.6
+	 */
+	function toggleCanModifyProject(&$pks, $prefix, &$newValue)
+	{
+		// Initialise variables.
+//		$dispatcher	= JDispatcher::getInstance();	// This is only needed if you are going to trigger events
+		$user		= JFactory::getUser();
+        // Check if I am a Super Admin
+		//$iAmSuperAdmin	= $user->authorise('core.admin'); // This checks if user is a super admin
+		$table		= $this->getTable();
+		$pks		= (array) $pks;
+		
+		JPluginHelper::importPlugin('user');
+
+		// Access checks.
+		foreach ($pks as $i => $pk)
+		{
+			if ($table->load($pk)) {
+				
+				$old	= $table->getProperties();
+				$allow	= $user->authorise('core.edit.state', 'com_serviceproject');
+
+				if ($allow) {
+					$newValue					= !$table->canmodifyproject;
+					$table->canmodifyproject	= $newValue;
+					// Allow an exception to be thrown.
+					try
+					{
+						// Store the table.
+						if (!$table->store()) {
+							$this->setError($table->getError());
+							return false;
+						}
+
+					}
+					catch (Exception $e)
+					{
+						$this->setError($e->getMessage());
+
+						return false;
+					}
+				}
+				else {
+					// Prune items that you can't change.
+					unset($pks[$i]);
+					JError::raiseWarning(403, JText::_('JLIB_APPLICATION_ERROR_EDITSTATE_NOT_PERMITTED'));
+				}
+			}
+		}
+		return true;
+	}
+
+	/**
+	 * Method to toggle CanModifyVolunteers values for Project Roles.
+	 *
+	 * @param	array	$pks	The ids of the items to activate.
+	 *
+	 * @return	boolean	True on success.
+	 * @since	1.6
+	 */
+	function toggleCanModifyVolunteers(&$pks, $prefix, &$newValue)
+	{
+		// Initialise variables.
+//		$dispatcher	= JDispatcher::getInstance();	// This is only needed if you are going to trigger events
+		$user		= JFactory::getUser();
+        // Check if I am a Super Admin
+		//$iAmSuperAdmin	= $user->authorise('core.admin'); // This checks if user is a super admin
+		$table		= $this->getTable();
+		$pks		= (array) $pks;
+		
+		JPluginHelper::importPlugin('user');
+
+		// Access checks.
+		foreach ($pks as $i => $pk)
+		{
+			if ($table->load($pk)) {
+				
+				$old	= $table->getProperties();
+				$allow	= $user->authorise('core.edit.state', 'com_serviceproject');
+
+				if ($allow) {
+					$newValue					= !$table->canmodifyvolunteers;
+					$table->canmodifyvolunteers	= $newValue;
+					// Allow an exception to be thrown.
+					try
+					{
+						// Store the table.
+						if (!$table->store()) {
+							$this->setError($table->getError());
+							return false;
+						}
+
+					}
+					catch (Exception $e)
+					{
+						$this->setError($e->getMessage());
+
+						return false;
+					}
+				}
+				else {
+					// Prune items that you can't change.
+					unset($pks[$i]);
+					JError::raiseWarning(403, JText::_('JLIB_APPLICATION_ERROR_EDITSTATE_NOT_PERMITTED'));
+				}
+			}
+		}
+		return true;
+	}
+
+	/**
+	 * Method to toggle CanViewContactInfo values for Project Roles.
+	 *
+	 * @param	array	$pks	The ids of the items to activate.
+	 *
+	 * @return	boolean	True on success.
+	 * @since	1.6
+	 */
+	function toggleCanViewContactInfo(&$pks, $prefix, &$newValue)
+	{
+		// Initialise variables.
+//		$dispatcher	= JDispatcher::getInstance();	// This is only needed if you are going to trigger events
+		$user		= JFactory::getUser();
+        // Check if I am a Super Admin
+		//$iAmSuperAdmin	= $user->authorise('core.admin'); // This checks if user is a super admin
+		$table		= $this->getTable();
+		$pks		= (array) $pks;
+		
+		JPluginHelper::importPlugin('user');
+
+		// Access checks.
+		foreach ($pks as $i => $pk)
+		{
+			if ($table->load($pk)) {
+				
+				$old	= $table->getProperties();
+				$allow	= $user->authorise('core.edit.state', 'com_serviceproject');
+
+				if ($allow) {
+					$newValue					= !$table->canviewcontactinfo;
+					$table->canviewcontactinfo	= $newValue;
+					// Allow an exception to be thrown.
+					try
+					{
+						// Store the table.
+						if (!$table->store()) {
+							$this->setError($table->getError());
+							return false;
+						}
+
+					}
+					catch (Exception $e)
+					{
+						$this->setError($e->getMessage());
+
+						return false;
+					}
+				}
+				else {
+					// Prune items that you can't change.
+					unset($pks[$i]);
+					JError::raiseWarning(403, JText::_('JLIB_APPLICATION_ERROR_EDITSTATE_NOT_PERMITTED'));
+				}
+			}
+		}
+		return true;
+	}
 }

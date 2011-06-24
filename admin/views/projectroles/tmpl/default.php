@@ -12,8 +12,20 @@
 // no direct access
 defined('_JEXEC') or die;
 
+// Include the component HTML helpers.
 JHtml::addIncludePath(JPATH_COMPONENT.DS.'helpers'.DS.'html');
 JHtml::_('behavior.tooltip');
+JHtml::_('behavior.formvalidation');
+JHtml::_('behavior.keepalive');
+$baseurl = JURI::base();
+$doc = & JFactory::getDocument();
+//$doc->addScript( 'http://maps.google.com/maps/api/js?sensor=false');
+//$doc->addScript( $baseurl.'components/com_serviceproject/views/address/tmpl/googlemapsapi.js');
+//$doc->addStyleSheet( $baseurl.'components/com_serviceproject/helpers/css/start/jquery-ui-1.8.5.custom.css');
+$doc->addScript( $baseurl.'components/com_serviceproject/js/jquery.min.js');
+$doc->addScript( $baseurl.'components/com_serviceproject/js/jquerybase.js');
+$doc->addScript( $baseurl.'components/com_serviceproject/js/ajaxbase.js');
+$doc->addScript( $baseurl.'components/com_serviceproject/js/ajax.projectroles.js');
 
 $user	= JFactory::getUser();
 $listOrder	= $this->state->get('list.ordering');
@@ -118,13 +130,13 @@ $canChange	= $user->authorise('core.edit.state',	'com_serviceproject');
 					<?php echo $this->escape($item->role_level); ?><?php if ($item->systemid > 0) { echo ' (SYS)'; }?>
 				</td>
 				<td class="center">
-					<?php echo ServiceProjectHelper::showTrueFalse($item->canmodifyproject); ?>
+					<?php echo ServiceProjectHelper::showTrueFalseLink($item->canmodifyproject, 'csp_updateCanModifyProject', 'cmp', $item->id); ?>
 				</td>
 				<td class="center">
-					<?php echo ServiceProjectHelper::showTrueFalse($item->canmodifyvolunteers); ?>
+					<?php echo ServiceProjectHelper::showTrueFalseLink($item->canmodifyvolunteers, 'csp_updateCanModifyVolunteers', 'cmv', $item->id); ?>
 				</td>
 				<td class="center">
-					<?php echo ServiceProjectHelper::showTrueFalse($item->canviewcontactinfo, 'COM_SERVICEPROJECT_CANVIEW', 'COM_SERVICEPROJECT_CANNOTVIEW'); ?>
+					<?php echo ServiceProjectHelper::showTrueFalseLink($item->canviewcontactinfo, 'csp_updateCanViewContactInfo', 'cvc', $item->id, 'COM_SERVICEPROJECT_CANVIEW', 'COM_SERVICEPROJECT_CANNOTVIEW'); ?>
 				</td>
 				<td class="center">
 					<?php echo $this->escape($item->rolelevelscanassign); ?>
@@ -162,6 +174,8 @@ $canChange	= $user->authorise('core.edit.state',	'com_serviceproject');
 		<input type="hidden" name="boxchecked" value="0" />
 		<input type="hidden" name="filter_order" value="<?php echo $listOrder; ?>" />
 		<input type="hidden" name="filter_order_Dir" value="<?php echo $listDirn; ?>" />
+	</div>
+	<div id="token">
 		<?php echo JHtml::_('form.token'); ?>
 	</div>
 </form>
