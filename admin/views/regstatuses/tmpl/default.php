@@ -12,8 +12,17 @@
 // no direct access
 defined('_JEXEC') or die;
 
+// Include the component HTML helpers.
 JHtml::addIncludePath(JPATH_COMPONENT.DS.'helpers'.DS.'html');
 JHtml::_('behavior.tooltip');
+JHtml::_('behavior.formvalidation');
+JHtml::_('behavior.keepalive');
+$baseurl = JURI::base();
+$doc = & JFactory::getDocument();
+$doc->addScript( $baseurl.'components/com_serviceproject/js/jquery.min.js');
+$doc->addScript( $baseurl.'components/com_serviceproject/js/jquerybase.js');
+$doc->addScript( $baseurl.'components/com_serviceproject/js/ajaxbase.js');
+$doc->addScript( $baseurl.'components/com_serviceproject/js/ajax.regstatuses.js');
 
 $user	= JFactory::getUser();
 $listOrder	= $this->state->get('list.ordering');
@@ -103,7 +112,7 @@ $canChange	= $user->authorise('core.edit.state',	'com_serviceproject');
 					<?php endif; ?>
 				</td>
 				<td class="center">
-					<?php echo ServiceProjectHelper::showTrueFalse($item->counted, 'COM_SERVICEPROJECT_ISCOUNTED', 'COM_SERVICEPROJECT_ISNOTCOUNTED'); ?>
+					<?php echo ServiceProjectHelper::showTrueFalseLink($item->counted, 'csp_updateIsCounted', 'ric', $item->id, 'COM_SERVICEPROJECT_ISCOUNTED', 'COM_SERVICEPROJECT_ISNOTCOUNTED'); ?>
 				</td>
 				<td class="center">
 					<?php echo JHtml::_('jgrid.published', $item->published, $i, 'regstatuses.', $canChange); ?>
@@ -138,6 +147,8 @@ $canChange	= $user->authorise('core.edit.state',	'com_serviceproject');
 		<input type="hidden" name="boxchecked" value="0" />
 		<input type="hidden" name="filter_order" value="<?php echo $listOrder; ?>" />
 		<input type="hidden" name="filter_order_Dir" value="<?php echo $listDirn; ?>" />
+	</div>
+	<div id="token">
 		<?php echo JHtml::_('form.token'); ?>
 	</div>
 </form>

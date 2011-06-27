@@ -124,4 +124,62 @@ class ServiceProjectModelRegStatus extends JModelAdmin
 		return $condition;
 	}
 
+	/**
+	 * Method to toggle counted values for Registration Status.
+	 *
+	 * @param	array	$pks	The ids of the items to activate.
+	 *
+	 * @return	boolean	True on success.
+	 * @since	1.6
+	 */
+	function toggleRegistrationIsCounted(&$pks, $prefix, &$newValue)
+	{
+		// Initialise variables.
+//		$dispatcher	= JDispatcher::getInstance();	// This is only needed if you are going to trigger events
+		$user		= JFactory::getUser();
+        // Check if I am a Super Admin
+		//$iAmSuperAdmin	= $user->authorise('core.admin'); // This checks if user is a super admin
+		$table		= $this->getTable();
+		$pks		= (array) $pks;
+		
+		JPluginHelper::importPlugin('user');
+
+		// Access checks.
+		foreach ($pks as $i => $pk)
+		{
+			if ($table->load($pk)) {
+				
+				$old	= $table->getProperties();
+				$allow	= $user->authorise('core.edit.state', 'com_serviceproject');
+
+				if ($allow) {
+					$newValue					= !$table->counted;
+					$table->counted	= $newValue;
+					// Allow an exception to be thrown.
+					try
+					{
+						// Store the table.
+						if (!$table->store()) {
+							$this->setError($table->getError());
+							return false;
+						}
+
+					}
+					catch (Exception $e)
+					{
+						$this->setError($e->getMessage());
+
+						return false;
+					}
+				}
+				else {
+					// Prune items that you can't change.
+					unset($pks[$i]);
+					JError::raiseWarning(403, JText::_('JLIB_APPLICATION_ERROR_EDITSTATE_NOT_PERMITTED'));
+				}
+			}
+		}
+		return true;
+	}
+
 }
